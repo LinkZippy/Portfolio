@@ -1,3 +1,3 @@
-## Welcome to my portfolio site!
+# Welcome to my portfolio site!
 
-# Visit me [here](linkzippy.github.io)!
+Visit me [here](linkzippy.github.io)!
