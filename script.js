@@ -240,20 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 workTitle.classList.remove("hidden");
                 applyAnimation(workTitle, ["slide-out-up"], "slide-in-down");
 
-                workBar.classList.remove("hidden");
-                applyAnimation(workBar, ["slide-out-up"], "slide-in-down");
-
                 carousel.classList.remove("hidden");
                 applyAnimation(carousel, ["fadeOut"], "fadeIn");
-
-                dartmouth.classList.remove("hidden");
-                applyAnimation(dartmouth, ["slide-out-right"], "slide-in-left");
-
-                ivl.classList.remove("hidden");
-                applyAnimation(ivl, ["slide-out-right"], "slide-in-left");
-
-                heng.classList.remove("hidden");
-                applyAnimation(heng, ["slide-out-right"], "slide-in-left");
 
                 projectTitle.classList.remove("hidden");
                 applyAnimation(projectTitle, ["slide-out-up"], "slide-in-down");

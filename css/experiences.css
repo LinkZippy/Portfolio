@@ -1,17 +1,7 @@
-.experiences-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: row;
-    align-items: center;
-    max-height: 80vh;
-    overflow: visible;
-}
-
 .languages-carousel {
     transition: opacity 1s ease;
     position: relative;
-    top: -68vh;
+    top: clamp(-42rem, -65vmin, -28rem);
     width: 100%;
     overflow: hidden;
     background: transparent;
@@ -25,19 +15,23 @@
 
 .carousel-track img {
     position: relative;
-    width: 3vw;
+    width: clamp(2rem, 3.5vmin, 3.5rem);
     height: auto;
-    margin: 0 2vw;
+    margin: 0 clamp(0.75rem, 2vmin, 2rem);
 }
 
 .experiences-container {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
+    gap: clamp(2rem, 4vmin, 4rem);
+    flex: 1;
+    width: 100%;
+    max-width: min(1200px, calc(100% - 2 * var(--page-gutter)));
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: clamp(2rem, 4vmin, 4rem) var(--page-gutter);
+    max-height: min(80vh, 52rem);
+    overflow: visible;
 }
 
 /* --- WORK (left column) --- */
@@ -108,7 +102,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 13rem;
-    margin-left: 5rem;
+    margin-left: clamp(1.5rem, 4vmin, 5rem);
 }
 
 .project-title {

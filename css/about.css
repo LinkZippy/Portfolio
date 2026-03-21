@@ -28,10 +28,10 @@
 #about h2 {
     justify-content: left;
     text-align: left;
-    font-size: 4em;
-    max-width: 25vw;
-    margin-top: 15vh;
-    margin-left: 9vw;
+    font-size: clamp(2rem, 5vmin, 4em);
+    max-width: min(22rem, 90%);
+    margin-top: clamp(3rem, 12vmin, 8rem);
+    margin-left: var(--page-gutter);
     opacity: 0;
     text-shadow:
         1px 1px 0 #ddd,
@@ -54,20 +54,19 @@
 #about h2::before {
     content: "";
     position: absolute;
-    left: -1vw;
-    top: -3vh;
+    left: -0.35rem;
+    top: -0.5rem;
     height: 78%;
-    width: 0.3vw;
-    margin-top: 5vh;
+    width: 0.2rem;
+    margin-top: clamp(0.5rem, 4vmin, 2.5rem);
     background-color: #1e3a8a;
 }
 
 #about p {
     font-size: 1.3em;
-    max-width: 40vw;
-    /* still viewport-based for the "look" */
-    margin-left: 8vw;
-    padding-top: 2vw;
+    max-width: var(--content-max);
+    margin-left: var(--page-gutter-sm);
+    padding-top: clamp(0.75rem, 2vmin, 1.5rem);
     text-align: justify;
 
     /* new lines to fix overflow on all screens */
@@ -94,8 +93,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0 7%;
-    gap: 7%;
+    padding: 0 var(--page-gutter);
+    gap: clamp(1.5rem, 5vmin, 4rem);
     flex-wrap: wrap;
 }
 
@@ -105,21 +104,21 @@
 }
 
 #timeline-container {
-    margin-top: 5vh;
+    margin-top: clamp(1.5rem, 4vmin, 3rem);
     flex: 1;
     position: relative;
-    max-height: 80vh;
+    max-height: min(80vh, 52rem);
     overflow: visible;
 }
 
 #timeline-container img {
-    padding-top: 11vh;
+    padding-top: clamp(3rem, 10vmin, 7rem);
     position: absolute;
     height: auto;
 }
 
 .timeline1 {
-    width: 17vw;
+    width: clamp(9rem, 17vw, 15rem);
     top: 0;
     left: 0;
     position: relative;
@@ -127,8 +126,8 @@
 }
 
 .timeline2 {
-    width: 17vw;
-    top: 38vh;
+    width: clamp(9rem, 17vw, 15rem);
+    top: clamp(14rem, 38vmin, 26rem);
     right: 0;
     z-index: 2;
     position: relative;
@@ -136,16 +135,16 @@
 }
 
 .timeline3 {
-    width: 24vw;
-    top: 11vh;
+    width: clamp(12rem, 24vw, 20rem);
+    top: clamp(4rem, 11vmin, 8rem);
     right: 5%;
     position: relative;
     opacity: 0;
 }
 
 .timeline4 {
-    width: 24vw;
-    top: 30vh;
+    width: clamp(12rem, 24vw, 20rem);
+    top: clamp(10rem, 30vmin, 20rem);
     left: 10%;
     position: relative;
     opacity: 0;
@@ -187,7 +186,8 @@
     opacity: 0;
     pointer-events: none;
     text-align: center;
-    width: 17vw;
+    width: 100%;
+    max-width: clamp(9rem, 17vw, 15rem);
 }
 
 .timeline-wrapper:hover {
@@ -205,25 +205,25 @@
 }
 
 .caption1 {
-    padding-top: 45vh;
+    padding-top: clamp(12rem, 42vmin, 28rem);
     animation: fadeOut 0.1s ease forwards;
 }
 
 .caption2 {
-    padding-top: 43vh;
+    padding-top: clamp(11rem, 40vmin, 27rem);
     animation: fadeOut 0.1s ease forwards;
 }
 
 .caption3 {
-    padding-top: 43vh;
-    padding-left: 1vw;
+    padding-top: clamp(11rem, 40vmin, 27rem);
+    padding-left: 0.35rem;
     animation: fadeOut 0.1s ease forwards;
     white-space: nowrap;
 }
 
 .caption4 {
-    padding-top: 41vh;
-    padding-left: 6vw;
+    padding-top: clamp(10rem, 38vmin, 26rem);
+    padding-left: clamp(0.5rem, 4vmin, 4rem);
     animation: fadeOut 0.1s ease forwards;
     white-space: nowrap;
 }

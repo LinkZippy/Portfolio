@@ -1,11 +1,11 @@
-involvement-container {
+.involvement-container {
     position: relative;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: row;
     align-items: center;
-    max-height: 80vh;
+    max-height: min(80vh, 52rem);
     overflow: visible;
 }
 
@@ -15,17 +15,17 @@ involvement-container {
     font-style: normal;
     color: #4a4a4a;
     position: relative;
-    top: 15vh;
-    left: 10vw;
-    font-size: 3.3em;
+    top: clamp(2rem, 12vmin, 6rem);
+    left: var(--page-gutter);
+    font-size: clamp(1.75rem, 5vmin, 3.3em);
 }
 
 #involvement p {
     position: relative;
     font-size: 1.3em;
-    max-width: 40vw;
-    top: 16vh;
-    left: 10.5vw;
+    max-width: min(42rem, calc(100% - 2 * var(--page-gutter)));
+    top: clamp(2.5rem, 14vmin, 7rem);
+    left: var(--page-gutter);
     text-align: justify;
 }
 
@@ -33,39 +33,53 @@ involvement-container {
 .tsa img,
 .ismp img,
 .aapihm img,
-.dartslam img {
+.dartslam img,
+.zete img,
+.wac img {
     position: relative;
     width: 100px;
     height: auto;
 }
 
 .opal img {
-    width: 13vw;
-    top: -25vh;
-    left: 60vw;
+    width: clamp(5rem, 13vw, 11rem);
+    top: clamp(-18rem, -22vmin, -10rem);
+    left: min(52rem, 58vw);
 }
 
 .tsa img {
-    width: 12vw;
-    top: -75vh;
-    left: 73vw;
+    width: clamp(4.5rem, 12vw, 10rem);
+    top: clamp(-48rem, -58vmin, -32rem);
+    left: min(48rem, 70vw);
     z-index: -1;
 }
 
 .ismp img {
-    width: 10vw;
-    top: -55vh;
-    left: 87vw;
+    width: clamp(4rem, 10vw, 9rem);
+    top: clamp(-38rem, -48vmin, -26rem);
+    left: min(52rem, 84vw);
 }
 
 .aapihm img {
-    width: 10vw;
-    top: -80vh;
-    left: 83vw;
+    width: clamp(4rem, 10vw, 9rem);
+    top: clamp(-52rem, -62vmin, -36rem);
+    left: min(50rem, 80vw);
 }
 
 .dartslam img {
-    width: 10vw;
-    top: -94vh;
-    left: 72vw;
+    width: clamp(4rem, 10vw, 9rem);
+    top: clamp(-58rem, -68vmin, -40rem);
+    left: min(48rem, 72vw);
+}
+
+.zete img {
+    width: clamp(4rem, 10vw, 9rem);
+    top: clamp(-58rem, -68vmin, -40rem);
+    left: min(48rem, 72vw);
+}
+
+.wac img {
+    width: clamp(4rem, 10vw, 9rem);
+    top: clamp(-58rem, -68vmin, -40rem);
+    left: min(48rem, 72vw);
 }
