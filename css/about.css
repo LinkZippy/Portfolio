@@ -28,7 +28,7 @@
 #about h2 {
     justify-content: left;
     text-align: left;
-    font-size: clamp(2rem, 5vmin, 4em);
+    font-size: clamp(2rem, 5vmin, 2em);
     max-width: min(22rem, 90%);
     margin-top: clamp(3rem, 12vmin, 8rem);
     margin-left: var(--page-gutter);
@@ -63,7 +63,7 @@
 }
 
 #about p {
-    font-size: 1.3em;
+    font-size: 1.1em;
     max-width: var(--content-max);
     margin-left: var(--page-gutter-sm);
     padding-top: clamp(0.75rem, 2vmin, 1.5rem);
@@ -120,7 +120,7 @@
 .timeline1 {
     width: clamp(9rem, 17vw, 15rem);
     top: 0;
-    left: 0;
+    left: 15%;
     position: relative;
     opacity: 0;
 }
@@ -128,7 +128,7 @@
 .timeline2 {
     width: clamp(9rem, 17vw, 15rem);
     top: clamp(14rem, 38vmin, 26rem);
-    right: 0;
+    right: 10%;
     z-index: 2;
     position: relative;
     opacity: 0;
@@ -205,25 +205,25 @@
 }
 
 .caption1 {
-    padding-top: clamp(12rem, 42vmin, 28rem);
+    top: clamp(20rem, 10vmin, 20rem);
     animation: fadeOut 0.1s ease forwards;
 }
 
 .caption2 {
-    padding-top: clamp(11rem, 40vmin, 27rem);
+    padding-top: clamp(19.5rem, 40vmin, 27rem);
     animation: fadeOut 0.1s ease forwards;
 }
 
 .caption3 {
-    padding-top: clamp(11rem, 40vmin, 27rem);
-    padding-left: 0.35rem;
+    padding-top: clamp(18.5rem, 40vmin, 20rem);
+    padding-left: 3rem;
     animation: fadeOut 0.1s ease forwards;
     white-space: nowrap;
 }
 
 .caption4 {
-    padding-top: clamp(10rem, 38vmin, 26rem);
-    padding-left: clamp(0.5rem, 4vmin, 4rem);
+    padding-top: clamp(18rem, 38vmin, 26rem);
+    padding-left: clamp(4rem, 4vmin, 4rem);
     animation: fadeOut 0.1s ease forwards;
     white-space: nowrap;
 }

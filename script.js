@@ -399,7 +399,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //swapping words
 
-    const words = ["coder.", "photographer.", "works a lot.", "human.", "always hungry."];
+    const words = ["always learning.", "a photographer.", "a sports enthusiast.", "a builder.", "always hungry."];
     let current = 0;
     const swapWord = document.getElementById("swap-word");
 
