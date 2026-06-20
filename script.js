@@ -1,5 +1,26 @@
 let cloudsGenerated = false;
 
+function updateNavLine() {
+    const navLinks = document.querySelector('.nav-links');
+    const dots = document.querySelectorAll('.nav-links .dot');
+    if (!navLinks || !dots.length) return;
+
+    const ulRect = navLinks.getBoundingClientRect();
+    const firstRect = dots[0].getBoundingClientRect();
+    const lastRect = dots[dots.length - 1].getBoundingClientRect();
+
+    const left = firstRect.left + firstRect.width / 2 - ulRect.left;
+    const right = ulRect.right - (lastRect.left + lastRect.width / 2);
+
+    let styleEl = document.getElementById('nav-line-style');
+    if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'nav-line-style';
+        document.head.appendChild(styleEl);
+    }
+    styleEl.textContent = `.nav-links::before { left: ${left}px; right: ${right}px; }`;
+}
+
 window.addEventListener('load', () => {
     document.querySelector(".horizontal-scroll").scrollTo({
         left: document.getElementById("intro").offsetLeft,
@@ -19,7 +40,13 @@ window.addEventListener('load', () => {
         document.querySelector('.clouds').classList.add('fadeIn');
         document.querySelector('footer').classList.add('fadeIn');
     }
+
 });
+
+window.addEventListener('load', updateNavLine);
+window.addEventListener('load', () => { document.fonts.ready.then(updateNavLine); });
+
+window.addEventListener('resize', updateNavLine);
 
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll('section');
@@ -220,6 +247,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 700);
     }, { passive: false });
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    horizontalScroll.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    horizontalScroll.addEventListener('touchend', (e) => {
+        const deltaX = touchStartX - e.changedTouches[0].clientX;
+        const deltaY = touchStartY - e.changedTouches[0].clientY;
+
+        if (Math.abs(deltaX) < 40 && Math.abs(deltaY) < 40) return;
+        if (Math.abs(deltaY) > Math.abs(deltaX)) return;
+
+        const now = Date.now();
+        if (scrollLocked || now - lastScrollTime < 600) return;
+
+        const direction = deltaX > 0 ? 1 : -1;
+        currentIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
+        scrollLocked = true;
+        lastScrollTime = now;
+
+        horizontalScroll.scrollTo({
+            left: currentIndex * window.innerWidth,
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => { scrollLocked = false; }, 700);
+    }, { passive: true });
+
     //experiences animations: using a different approach to test separating animations from adding hidden/visible in js
 
     const experiencesSection = document.getElementById("experiences");
@@ -322,15 +380,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const top = Math.random() * 10;
             img.style.top = `${top}%`;
 
-            const left = -30 + Math.random() * 130;
-            img.style.left = `${left}vw`;
+            img.style.left = '0';
 
             const width = 250 + Math.random() * 100;
             img.style.width = `${width}px`;
 
             const duration = 40 + Math.random() * 40;
             img.style.animationDuration = `${duration}s`;
-            img.style.animationDelay = `0s`;
+            img.style.animationDelay = `${Math.random() * 30}s`;
+            img.style.animationFillMode = 'backwards';
 
             const scale = 0.9 + Math.random() * 0.3;
             img.style.transform = `scale(${scale})`;

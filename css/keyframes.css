@@ -1,6 +1,6 @@
 @keyframes floatLeftRight {
     0% {
-        transform: translateX(-10vw);
+        transform: translateX(-40vw);
     }
 
     100% {

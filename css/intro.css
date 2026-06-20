@@ -13,7 +13,7 @@
     opacity: 0;
     padding: clamp(1rem, 8vmin, 6rem) var(--page-gutter);
     margin-top: clamp(6rem, 28vmin, 18rem);
-    margin-bottom: -100px;
+    margin-bottom: clamp(-6rem, -12vmin, -2rem);
     text-shadow:
         1px 1px 0 #ddd,
         2px 2px 0 #ccc,
@@ -80,19 +80,18 @@
 }
 
 .intro-img {
-    width: min(36rem, 85%);
+    width: min(35rem, 85%);
     max-width: 40vw;
     height: auto;
     display: block;
     cursor: pointer;
     opacity: 1;
     transition: transform 0.3s ease;
-    margin-bottom: clamp(2rem, 14vmin, 10rem);
+    margin-left: 2rem;
 }
 
 .intro-img-container {
     opacity: 0;
-
 }
 
 .intro-img-container.first-visible {

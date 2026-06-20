@@ -55,10 +55,11 @@ nav a.active {
 }
 
 .nav-links {
+    position: relative;
     display: flex;
-    gap: 80px;
+    gap: clamp(0.5rem, 4vw, 5rem);
     list-style: none;
-    padding-top: 30px;
+    padding-top: clamp(0.75rem, 2.5vh, 1.875rem);
     margin: 0;
 }
 
@@ -91,12 +92,14 @@ nav a.active {
 }
 
 .nav-links .dot {
+    position: relative;
+    z-index: 1;
     width: 10px;
     height: 10px;
     background-color: #ccc;
     border-radius: 50%;
     transition: background-color 0.3s ease;
-}
+} 
 
 .nav-links .dot.active {
     background-color: #1e3a8a;
@@ -105,10 +108,14 @@ nav a.active {
 .nav-links::before {
     content: "";
     position: absolute;
-    width: 660px;
-    margin-top: 50px;
-    margin-left: 30px;
+    bottom: 5px;
     height: 2px;
     background-color: #ccc;
-    z-index: -1000;
+}
+
+@media (max-width: 480px) {
+    .nav-links a {
+        font-size: 0.7rem;
+        padding: 4px 5px;
+    }
 }

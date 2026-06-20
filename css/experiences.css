@@ -46,9 +46,9 @@
 .work-title {
     writing-mode: vertical-rl;
     rotate: 180deg;
-    font-size: clamp(5rem, 3vw, 2.5rem);
+    font-size: clamp(2.5rem, 4vw, 5rem);
     margin-top: 2rem;
-    margin-left: -10rem;
+    margin-left: clamp(-8rem, -9vw, -4rem);
     font-weight: 700;
     color: #4a4a4a;
     text-align: center;
@@ -106,7 +106,7 @@
 }
 
 .project-title {
-    font-size: clamp(5rem, 3vw, 2.5rem);
+    font-size: clamp(2.5rem, 4vw, 5rem);
     font-weight: 700;
     color: #4a4a4a;
     margin: 0;
@@ -141,19 +141,64 @@
 @media (max-width: 900px) {
     .experiences-container {
         grid-template-columns: 1fr;
-        /* stack work above projects */
+        padding: clamp(1rem, 3vmin, 2rem) var(--page-gutter);
+        max-height: none;
+        overflow-y: auto;
     }
 
     .work {
         grid-template-columns: 1fr;
-        /* remove vertical title column */
+        margin-top: clamp(3rem, 8vmin, 5rem);
     }
 
     .work-title {
         writing-mode: horizontal-tb;
+        rotate: none;
         transform: none;
         text-align: left;
+        margin-left: 0;
         margin-bottom: 1rem;
+        font-size: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    .project-title {
+        font-size: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    .projects {
+        margin-bottom: 2rem;
+        margin-left: 0;
+    }
+
+    .yacht-image,
+    .moxopal-image {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .work-entry {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .work-entry img {
+        width: clamp(60px, 20vw, 100px);
+    }
+
+    .work-text h2 {
+        font-size: 1.3rem;
+    }
+
+    .work-text p,
+    .project-entry p {
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .languages-carousel {
+        top: 0;
+        margin-top: 1rem;
     }
 }
 

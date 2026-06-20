@@ -3,7 +3,6 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    justify-content: row;
     align-items: center;
     max-height: min(80vh, 52rem);
     overflow: visible;
@@ -74,12 +73,35 @@
 
 .zete img {
     width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-58rem, -68vmin, -40rem);
-    left: min(48rem, 72vw);
+    top: clamp(-44rem, -54vmin, -30rem);
+    left: min(56rem, 76vw);
 }
 
 .wac img {
     width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-58rem, -68vmin, -40rem);
-    left: min(48rem, 72vw);
+    top: clamp(-30rem, -38vmin, -22rem);
+    left: min(54rem, 88vw);
+}
+
+@media (max-width: 768px) {
+    .involvement-header {
+        top: clamp(1rem, 8vmin, 4rem);
+        font-size: clamp(1.25rem, 5vmin, 2.5rem);
+    }
+
+    #involvement p {
+        top: clamp(1.5rem, 10vmin, 5rem);
+        font-size: 0.95rem;
+        max-width: calc(100% - 2 * var(--page-gutter));
+    }
+
+    .opal img,
+    .tsa img,
+    .ismp img,
+    .aapihm img,
+    .dartslam img,
+    .zete img,
+    .wac img {
+        width: clamp(2.5rem, 7vw, 5rem);
+    }
 }
