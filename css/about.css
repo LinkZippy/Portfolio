@@ -30,7 +30,7 @@
     text-align: left;
     font-size: clamp(2rem, 5vmin, 2em);
     max-width: min(22rem, 90%);
-    margin-top: clamp(3rem, 12vmin, 8rem);
+    margin-top: clamp(5rem, 18vmin, 11rem);
     margin-left: var(--page-gutter);
     opacity: 0;
     text-shadow:
@@ -58,7 +58,7 @@
     top: -0.5rem;
     height: 78%;
     width: 0.2rem;
-    margin-top: clamp(0.5rem, 4vmin, 2.5rem);
+    margin-top: clamp(2.5rem, 4vmin, 2.5rem);
     background-color: #1e3a8a;
 }
 
@@ -66,7 +66,7 @@
     font-size: 1.1em;
     max-width: var(--content-max);
     margin-left: var(--page-gutter-sm);
-    padding-top: clamp(0.75rem, 2vmin, 1.5rem);
+    padding-top: clamp(3.75rem, 2vmin, 5.5rem);
     text-align: justify;
 
     /* new lines to fix overflow on all screens */
@@ -113,7 +113,6 @@
 
 #timeline-container img {
     padding-top: clamp(3rem, 10vmin, 7rem);
-    position: absolute;
     height: auto;
 }
 
@@ -168,6 +167,9 @@
 
 .timeline-wrapper {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     opacity: 0;
     pointer-events: auto;
     transition: z-index 0.2s ease;
@@ -182,12 +184,13 @@
 }
 
 .caption {
-    position: absolute;
+    position: relative;
     opacity: 0;
     pointer-events: none;
     text-align: center;
     width: 100%;
-    max-width: clamp(9rem, 17vw, 15rem);
+    margin-top: -1.4rem;
+    font-size: clamp(0.6rem, 1.2vw, 0.85rem);
 }
 
 .timeline-wrapper:hover {
@@ -205,25 +208,19 @@
 }
 
 .caption1 {
-    top: clamp(20rem, 10vmin, 20rem);
     animation: fadeOut 0.1s ease forwards;
 }
 
 .caption2 {
-    padding-top: clamp(19.5rem, 40vmin, 27rem);
     animation: fadeOut 0.1s ease forwards;
 }
 
 .caption3 {
-    padding-top: clamp(18.5rem, 40vmin, 20rem);
-    padding-left: 3rem;
     animation: fadeOut 0.1s ease forwards;
     white-space: nowrap;
 }
 
 .caption4 {
-    padding-top: clamp(18rem, 38vmin, 26rem);
-    padding-left: clamp(4rem, 4vmin, 4rem);
     animation: fadeOut 0.1s ease forwards;
     white-space: nowrap;
 }
