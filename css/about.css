@@ -39,7 +39,7 @@
         3px 3px 0 #bbb,
         4px 4px 0 #aaa;
     position: relative;
-    font-family: "Tai Heritage Pro", serif;
+    font-family: "Tai Heritage Pro", sans-serif;
     font-weight: 400;
 }
 
@@ -51,19 +51,8 @@
     animation: slideOutRight 0.75s ease forwards;
 }
 
-#about h2::before {
-    content: "";
-    position: absolute;
-    left: -0.35rem;
-    top: -0.5rem;
-    height: 78%;
-    width: 0.2rem;
-    margin-top: clamp(2.5rem, 4vmin, 2.5rem);
-    background-color: #1e3a8a;
-}
-
 #about p {
-    font-size: 1.1em;
+    font-size: 0.9em;
     max-width: var(--content-max);
     margin-left: var(--page-gutter-sm);
     padding-top: clamp(3.75rem, 2vmin, 5.5rem);
@@ -74,6 +63,7 @@
     word-break: break-word;
     hyphens: auto;
     box-sizing: border-box;
+    font-weight: 300;
 
 }
 

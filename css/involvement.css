@@ -1,107 +1,97 @@
-.involvement-container {
-    position: relative;
+#involvement {
+    padding: clamp(3rem, 8vmin, 6rem) var(--page-gutter) clamp(1rem, 2vmin, 2rem);
+}
+
+.involvement-layout {
     display: flex;
+    flex-direction: row;
     flex: 1;
+    width: 100%;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 3rem);
+}
+
+.involvement-col-left,
+.involvement-col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.1rem, 0.3vmin, 0.25rem);
+}
+
+.involvement-col-center {
+    flex: 1.2;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: min(80vh, 52rem);
-    overflow: visible;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vmin, 1.25rem);
+}
+
+/* Stagger: odd items lean left, even items lean right */
+.involvement-col-left .involvement-item:nth-child(odd),
+.involvement-col-right .involvement-item:nth-child(odd) {
+    align-self: flex-start;
+}
+
+.involvement-col-left .involvement-item:nth-child(even),
+.involvement-col-right .involvement-item:nth-child(even) {
+    align-self: flex-end;
 }
 
 .involvement-header {
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+    font-weight: 700;
     color: #4a4a4a;
-    position: relative;
-    top: clamp(2rem, 12vmin, 6rem);
-    left: var(--page-gutter);
+    text-align: center;
     font-size: clamp(1.75rem, 5vmin, 3.3em);
 }
 
 #involvement p {
-    position: relative;
-    font-size: 1.3em;
-    max-width: min(42rem, calc(100% - 2 * var(--page-gutter)));
-    top: clamp(2.5rem, 14vmin, 7rem);
-    left: var(--page-gutter);
-    text-align: justify;
+    font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+    text-align: center;
+    font-weight: 300;
 }
 
-.opal img,
-.tsa img,
-.ismp img,
-.aapihm img,
-.dartslam img,
-.zete img,
-.wac img {
-    position: relative;
-    width: 100px;
+.involvement-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    margin-top: -2rem;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+    padding: 0;
+    line-height: 0;
+}
+
+.involvement-item.slide-in-up {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.involvement-item.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.involvement-item img {
+    width: clamp(10rem, 17vh, 16rem);
     height: auto;
 }
 
-.opal img {
-    width: clamp(5rem, 13vw, 11rem);
-    top: clamp(-18rem, -22vmin, -10rem);
-    left: min(52rem, 58vw);
-}
-
-.tsa img {
-    width: clamp(4.5rem, 12vw, 10rem);
-    top: clamp(-48rem, -58vmin, -32rem);
-    left: min(48rem, 70vw);
-    z-index: -1;
-}
-
-.ismp img {
-    width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-38rem, -48vmin, -26rem);
-    left: min(52rem, 84vw);
-}
-
-.aapihm img {
-    width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-52rem, -62vmin, -36rem);
-    left: min(50rem, 80vw);
-}
-
-.dartslam img {
-    width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-58rem, -68vmin, -40rem);
-    left: min(48rem, 72vw);
-}
-
-.zete img {
-    width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-44rem, -54vmin, -30rem);
-    left: min(56rem, 76vw);
-}
-
-.wac img {
-    width: clamp(4rem, 10vw, 9rem);
-    top: clamp(-30rem, -38vmin, -22rem);
-    left: min(54rem, 88vw);
-}
-
 @media (max-width: 768px) {
+    .involvement-layout {
+        gap: clamp(0.5rem, 2vw, 1.5rem);
+    }
+
     .involvement-header {
-        top: clamp(1rem, 8vmin, 4rem);
         font-size: clamp(1.25rem, 5vmin, 2.5rem);
     }
 
     #involvement p {
-        top: clamp(1.5rem, 10vmin, 5rem);
-        font-size: 0.95rem;
-        max-width: calc(100% - 2 * var(--page-gutter));
+        font-size: clamp(0.65rem, 3vw, 0.85rem);
     }
 
-    .opal img,
-    .tsa img,
-    .ismp img,
-    .aapihm img,
-    .dartslam img,
-    .zete img,
-    .wac img {
-        width: clamp(2.5rem, 7vw, 5rem);
+    .involvement-item img {
+        width: clamp(2rem, 9vh, 5rem);
     }
 }

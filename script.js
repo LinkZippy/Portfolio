@@ -310,19 +310,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     applyAnimationToAll(hengText, ["slide-out-right"], "slide-in-left");
                 }, 600);
 
-                yacht.classList.remove("hidden");
-                applyAnimation(yacht, ["slide-out-left"], "slide-in-right");
+                if (yacht) {
+                    yacht.classList.remove("hidden");
+                    applyAnimation(yacht, ["slide-out-left"], "slide-in-right");
+                }
 
-                moxopal.classList.remove("hidden");
-                applyAnimation(moxopal, ["slide-out-down"], "slide-in-up");
-
-                setTimeout(() => {
-                    yachtText.classList.remove("hidden");
-                    applyAnimation(yachtText, ["slide-out-up"], "slide-in-down");
-
-                    moxopalText.classList.remove("hidden");
-                    applyAnimation(moxopalText, ["slide-out-up"], "slide-in-down");
-                }, 600);
+                if (moxopal) {
+                    moxopal.classList.remove("hidden");
+                    applyAnimation(moxopal, ["slide-out-down"], "slide-in-up");
+                }
 
             } else {
                 applyAnimation(workTitle, ["slide-in-down"], "slide-out-up");
@@ -331,11 +327,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 applyAnimation(carousel, ["fadeIn"], "fadeOut");
                 carousel.classList.add("hidden");
 
-                applyAnimation(yacht, ["slide-in-right"], "slide-out-left");
-                yacht.classList.add("hidden");
+                if (yacht) {
+                    applyAnimation(yacht, ["slide-in-right"], "slide-out-left");
+                    yacht.classList.add("hidden");
+                }
 
-                applyAnimation(moxopal, ["slide-in-up"], "slide-out-down");
-                moxopal.classList.add("hidden");
+                if (moxopal) {
+                    applyAnimation(moxopal, ["slide-in-up"], "slide-out-down");
+                    moxopal.classList.add("hidden");
+                }
 
                 applyAnimation(projectTitle, ["slide-in-down"], "slide-out-up");
                 projectTitle.classList.add("hidden");
@@ -344,6 +344,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.5 });
 
     experiencesObserver.observe(experiencesSection);
+
+    const involvementSection = document.getElementById("involvement");
+    const involvementImgs = document.querySelectorAll(".involvement-item");
+    let involvementActive = false;
+    let involvementTimer = null;
+
+    const involvementObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const isIntersecting = entry.isIntersecting;
+            clearTimeout(involvementTimer);
+            involvementTimer = setTimeout(() => {
+                if (isIntersecting && !involvementActive) {
+                    involvementActive = true;
+                    involvementImgs.forEach((el, i) => {
+                        el.style.opacity = '';
+                        el.classList.remove('fade-out');
+                        el.style.animationDelay = `${i * 0.08}s`;
+                        el.classList.add('slide-in-up');
+                    });
+                } else if (!isIntersecting && involvementActive) {
+                    involvementActive = false;
+                    involvementImgs.forEach(el => {
+                        el.style.opacity = '1';
+                        el.classList.remove('slide-in-up');
+                        el.style.animationDelay = '0s';
+                        el.classList.add('fade-out');
+                    });
+                }
+            }, 50);
+        });
+    }, { threshold: 0.5 });
+
+    involvementObserver.observe(involvementSection);
 
     const dots = document.querySelectorAll('.dot');
 
