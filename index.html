@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/experiences.css">
     <link rel="stylesheet" href="css/involvement.css">
+    <link rel="stylesheet" href="css/resume.css">
     <link rel="stylesheet" href="css/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -109,6 +110,17 @@
                     <h1 class="work-title">LOGGED HOURS</h1>
 
                     <div class="work-items">
+                        <div class="work-entry">
+                            <img src="images/accenture.svg" alt="Accenture" loading="lazy">
+                            <div class="work-text">
+                                <h2>Accenture</h2>
+                                <h3><i>Finance Intern</i></h3>
+                                <p>
+                                    Assisted with financial operations and used Excel to analyze profit/loss data of
+                                    SET-listed companies in a professional work environment.
+                                </p>
+                            </div>
+                        </div>
 
                         <div class="work-entry">
                             <img src="images/dartmouthlogo.svg" alt="Dartmouth" loading="lazy">
@@ -135,17 +147,7 @@
                             </div>
                         </div>
 
-                        <div class="work-entry">
-                            <img src="images/accenture.svg" alt="Accenture" loading="lazy">
-                            <div class="work-text">
-                                <h2>Accenture</h2>
-                                <h3><i>Finance Intern</i></h3>
-                                <p>
-                                    Assisted with financial operations and used Excel to analyze profit/loss data of
-                                    SET-listed companies in a professional work environment.
-                                </p>
-                            </div>
-                        </div>
+
 
                     </div>
                 </div>
@@ -289,11 +291,99 @@
             </div>
         </section>
         <section id="resume">
-            <h2>Contact Me</h2>
-            <p>You can reach me through my social media accounts.</p>
+            <a class="resume-download" href="resume.pdf" download="26X_Resume_Pattapol_Sirimangklanurak.pdf">
+                &#8681; Download
+            </a>
+            <div class="resume-viewer" id="resume-viewer"></div>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        (async function () {
+            const container = document.getElementById('resume-viewer');
+            try {
+                const pdf = await pdfjsLib.getDocument('resume.pdf').promise;
+                const dpr = window.devicePixelRatio || 1;
+
+                const linkService = {
+                    externalLinkTarget: 2,
+                    externalLinkRel: 'noopener noreferrer',
+                    externalLinkEnabled: true,
+                    addLinkAttributes(link, url) {
+                        link.href = url;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                    },
+                    getDestinationHash: () => '',
+                    getAnchorUrl: () => '',
+                    setHash: () => {},
+                    navigateTo: () => {},
+                    goToPage: () => {},
+                    isExternalLinkTargetSet: () => true,
+                    executeNamedAction: () => {},
+                    cachePageRef: () => {},
+                };
+
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const naturalVp = page.getViewport({ scale: 1 });
+                    const scale = (window.innerWidth * 0.55) / naturalVp.width;
+                    const viewport = page.getViewport({ scale: scale * dpr });
+                    const cssWidth = viewport.width / dpr;
+                    const cssHeight = viewport.height / dpr;
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.style.width = `${cssWidth}px`;
+                    canvas.style.height = `${cssHeight}px`;
+                    canvas.style.display = 'block';
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'resume-page';
+                    wrapper.style.position = 'relative';
+                    wrapper.style.width = `${cssWidth}px`;
+                    wrapper.style.height = `${cssHeight}px`;
+                    wrapper.appendChild(canvas);
+
+                    const annotationDiv = document.createElement('div');
+                    annotationDiv.className = 'annotationLayer';
+                    wrapper.appendChild(annotationDiv);
+
+                    container.appendChild(wrapper);
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    await page.render({ canvasContext: ctx, viewport }).promise;
+
+                    try {
+                        const annotations = await page.getAnnotations();
+                        const displayViewport = page.getViewport({ scale });
+                        pdfjsLib.AnnotationLayer.render({
+                            viewport: displayViewport.clone({ dontFlip: true }),
+                            div: annotationDiv,
+                            annotations,
+                            page,
+                            linkService,
+                            renderInteractiveForms: false,
+                        });
+                    } catch (_) {}
+                }
+            } catch (e) {
+                container.innerHTML =
+                    '<p class="resume-error">PDF preview is unavailable in this environment.<br>Use the Download button to view the resume.</p>';
+            }
+        })();
+
+        document.getElementById('resume-viewer').addEventListener('wheel', function (e) {
+            e.stopPropagation();
+        }, { passive: true });
+    </script>
 </body>
 
 <footer class="initial-fade">
