@@ -88,10 +88,13 @@
 }
 
 .resume-download {
-    position: absolute;
-    bottom: 2rem;
+    position: fixed;
+    bottom: 5rem;
     right: 2rem;
-    z-index: 100;
+    z-index: 10001;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
     background-color: #1e3a8a;
     color: #fff;
     padding: 0.55rem 1.1rem;

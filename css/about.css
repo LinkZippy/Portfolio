@@ -52,16 +52,14 @@
 }
 
 #about p {
-    font-size: 0.9em;
+    font-size: 1.2rem;
     max-width: var(--content-max);
     margin-left: var(--page-gutter-sm);
     padding-top: clamp(3.75rem, 2vmin, 5.5rem);
     text-align: justify;
 
-    /* new lines to fix overflow on all screens */
     overflow-wrap: break-word;
     word-break: break-word;
-    hyphens: auto;
     box-sizing: border-box;
     font-weight: 300;
 

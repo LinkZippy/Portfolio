@@ -378,6 +378,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     involvementObserver.observe(involvementSection);
 
+    const resumeDownloadBtn = document.querySelector('.resume-download');
+    const resumeSection = document.getElementById('resume');
+    const resumeSectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            resumeDownloadBtn.style.opacity = entry.isIntersecting ? '1' : '0';
+            resumeDownloadBtn.style.pointerEvents = entry.isIntersecting ? 'auto' : 'none';
+        });
+    }, { threshold: 0.5 });
+    resumeSectionObserver.observe(resumeSection);
+
     const dots = document.querySelectorAll('.dot');
 
     function updateDotsAndNav() {

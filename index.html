@@ -304,6 +304,7 @@
             'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
         (async function () {
+
             const container = document.getElementById('resume-viewer');
             try {
                 const pdf = await pdfjsLib.getDocument('resume.pdf').promise;
