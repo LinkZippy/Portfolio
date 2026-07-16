@@ -1,7 +1,7 @@
 .languages-carousel {
     transition: opacity 1s ease;
     position: relative;
-    top: clamp(-44rem, -70vmin, -37rem);
+    top: clamp(-41rem, -65vmin, -34rem);
     width: 100%;
     overflow: hidden;
     background: transparent;
@@ -28,7 +28,7 @@
     flex: 1;
     width: 100%;
     max-width: min(1200px, calc(100% - 2 * var(--page-gutter)));
-    margin: 4rem auto 0 14rem;
+    margin: 1rem auto 0 auto;
     padding: clamp(2rem, 4vmin, 4rem) var(--page-gutter);
     max-height: min(80vh, 52rem);
     overflow: visible;
